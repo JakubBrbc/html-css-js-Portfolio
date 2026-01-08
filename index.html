@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Jakub Brabec</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
 </head>
@@ -35,6 +35,90 @@
             </div>
         </div>
     </nav>
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/profile-pic.png" alt="Jakub Brabec profile picture">
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Hello I'm</p>
+            <h1 class="title">Jakub Brabec</h1>
+            <p class="section__text__p2">Game designer</p>
+            <div class="btn-container">
+                <button 
+                class="btn btn-color-2" 
+                onclick="window.open('./assets/resume-example.pdf')"
+                >
+                Download CV 
+                </button>
+                <button 
+                class="btn btn-color-1" 
+                onclick="location.href = './#contact'"
+                >
+                Contact Info
+                </button>
+            </div>
+            <div id="socials-container">
+                <img 
+                 src="./assets/linkedin.png" 
+                 alt="My Linkedin profile" 
+                 class="icon" 
+                 onclick="location.href='https://linkedin.com/'"
+                />
+                <img 
+                 src="./assets/github.png" 
+                 alt="My github profile" 
+                 class="icon" 
+                 onclick="location.href='https://github.com/'"
+                />
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <p class="section__text__p1">Get to know more</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img 
+                 src="./assets/about-pic.png" 
+                 alt="Profile picture" 
+                 class="about-pic"
+                />
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img 
+                         src="./assets/experience.png" 
+                         alt="Experience icon" 
+                         class="icon" 
+                        />
+                        <h3>Experience</h3>
+                        <p> 2+ years <br />Frontend Development</p>
+                    </div>
+                    <div class="details-container">
+                        <img 
+                         src="./assets/education.png" 
+                         alt="Education icon" 
+                         class="icon"
+                        />
+                        <h3>Education</h3>
+                        <p>BA Bachelors degree <br />MA Masters degree</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse harum est maiores aspernatur incidunt laboriosam cupiditate minus velit eveniet qui voluptate quis quisquam nisi enim, culpa, nostrum consequatur reiciendis! Quia iure voluptatibus, corrupti quasi ab ad quaerat! Dicta non velit consectetur odit neque similique quas. Non, odit. Ducimus, mollitia repellat.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <img 
+         src="./assets/arrow.png" 
+         alt="Arrow icon" 
+         class="icon arrow" 
+         onclick="location.href='./#experience'"
+        />
+    </section>
 <script src="script.js"></script>    
 </body>
 </html>
