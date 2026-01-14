@@ -16,6 +16,13 @@
     #hamburger-nav {
         display: flex;
     }
+    nav {
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+    footer nav {
+        justify-content: space-around;
+    }
     #experience, .experience-details-container {
         margin-top: 2rem;
     }
