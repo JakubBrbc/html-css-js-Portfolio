@@ -1,6 +1,6 @@
 /* GENERAL */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://use.typekit.net/wdv7rfw.css');
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family:"Poppins", sans-serif;
+    font-family:"basic-sans", sans-serif;
 }
 
 html {
@@ -19,6 +19,8 @@ p {
     color: rgb(85,85,85);
 }
 
+/* INDEX.HTML */
+
 /* TRANSITION */
 
 a,
@@ -26,16 +28,28 @@ a,
     transition: all 300ms ease;
 }
 
+/* NAV */
+
+.nav-bars {
+    z-index: 10000;
+    position: fixed;
+    background-color: rgb(181, 181, 181);
+    width: 100%;
+    top: 0;
+    box-shadow: 0px 10px 5px rgb(181, 181, 181) ;
+}
+
 /* DESKTOP NAV */
 
 nav, .nav-links {
     display: flex;
+
 }
 
 nav {
     justify-content: space-around;
     align-items: center;
-    height: 17vh;
+    height: 10vh;
 }
 
 .nav-links {
@@ -59,6 +73,7 @@ a:hover {
 
 .logo {
     font-size: 2rem;
+    font-weight: 600;
 }
 
 .logo:hover {
@@ -162,6 +177,7 @@ section {
 /* PROFILE SECTION */
 
 #profile {
+    margin-top: 10vh;
     display: flex;
     justify-content: center;
     gap: 5rem;
@@ -186,6 +202,7 @@ section {
 
 .section__text__p1 {
     text-align: center;
+    margin-top: 10vh;
 }
 
 .section__text__p2 {
@@ -427,4 +444,10 @@ footer {
 
 footer p {
     text-align: center;
+}
+
+/* PROJECTS.HTML */
+
+#projects-profile {
+    margin-top: 10vh;
 }
