@@ -48,6 +48,19 @@
     }
 }
 
+@media screen and (max-width: 900px) {
+    .carousel-track .details-container {
+        flex: 0 0 calc((100% - var(--gap)) / 2);;
+    }
+    .carousel-btn.prev {
+        width: fit-content;
+    }
+
+    .carousel-btn.next{
+        width: fit-content;
+    }
+}
+
 @media screen and (max-width: 600px) {
     #contact,
     footer {
@@ -97,5 +110,8 @@
     }
     .text-container {
         text-align: justify;
+    }
+    .carousel-track .details-container {
+        flex: 0 0 100%;
     }
 }
