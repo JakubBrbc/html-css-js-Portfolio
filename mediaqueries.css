@@ -48,6 +48,19 @@
     }
 }
 
+@media screen and (max-width: 900px) {
+    .carousel-track .details-container {
+        flex: 0 0 calc((100% - var(--gap)) / 2);;
+    }
+    .carousel-btn.prev {
+        width: fit-content;
+    }
+
+    .carousel-btn.next{
+        width: fit-content;
+    }
+}
+
 @media screen and (max-width: 600px) {
     #contact,
     footer {
@@ -68,7 +81,7 @@
         flex-wrap: wrap;
     } 
     .contact-info-container {
-        margin: 0,1rem;
+        margin: 0 1rem;
     }
     .contact-info-container p, .nav-links li a {
         font-size: 1rem;
@@ -97,5 +110,34 @@
     }
     .text-container {
         text-align: justify;
+    }
+    #projects .experience-details-container {
+        padding: 0 1rem;
+    }
+    .carousel-track .details-container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .carousel-btn {
+        display: none;
+    }
+    .carousel {
+        padding: 0;
+        width: 100%;
+    }
+    .carousel-track{
+        padding: 1rem 2rem;
+        --gap: 1rem;
+    }
+    .carousel-viewport {
+        margin: 0;
+        overflow-y: visible;
+        overflow-x: hidden;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        transition: none;
     }
 }
