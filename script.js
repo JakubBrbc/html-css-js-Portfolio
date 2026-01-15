@@ -131,7 +131,7 @@ track.addEventListener('touchstart', (e) => {
 }, { passive: true });
 
 track.addEventListener('touchmove', (e) => {
-    if (isDragging) return;
+    if (!isDragging) return;
 
     const diff = startX - e.touches[0].clientX;
 
@@ -142,7 +142,11 @@ track.addEventListener('touchmove', (e) => {
     }
 }, { passive: true });
 
-track.addEventListener('touched', () => {
+track.addEventListener('touchend', () => {
+    isDragging = false;
+});
+
+track.addEventListener('touchcancel', () => {
     isDragging = false;
 });
 
