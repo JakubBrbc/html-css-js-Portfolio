@@ -13,14 +13,19 @@ function togglemenu() {
    CAROUSEL
 ========================= */
 
-const track = document.querySelector ('.carousel-track')
+document.querySelectorAll('.carousel').forEach(carousel => {
+
+const track = carousel.querySelector ('.carousel-track')
 const cards = Array.from(track.children)
-const nextBtn = document.querySelector ('.carousel-btn.next')
-const prevBtn = document.querySelector ('.carousel-btn.prev')
+const nextBtn = carousel.querySelector ('.carousel-btn.next')
+const prevBtn = carousel.querySelector ('.carousel-btn.prev')
 const realCardCount = cards.length
 
 let visibleCards = 3;
-let currentIndex;
+let currentIndex = 0;
+let autoplayInterval = null;
+
+const AUTOPLAY_DELAY = 4000; // 4 seconds
 
 /* ---------- Responsive card count ---------- */
 
@@ -62,7 +67,7 @@ function setupCarousel() {
 function updateCarousel(animated = true) {
     const allCards = Array.from(track.children);
     const cardWidth = allCards[0].getBoundingClientRect().width;
-    const gap = parseFloat(getComputedStyle(track).gap);
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
 
     if (!animated) {
         track.style.transition = 'none';
@@ -82,16 +87,36 @@ function updateCarousel(animated = true) {
     }
 }
 
+/* ---------- Autoplay ---------- */
+
+function startAutoplay() {
+    stopAutoplay(); // prevents duplicates
+    autoplayInterval = setInterval(() => {
+        currentIndex++;
+        updateCarousel(true);
+    },  AUTOPLAY_DELAY);
+}
+
+function stopAutoplay() {
+    if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+    }
+}
 /* ---------- Buttons ---------- */
 
-nextBtn.addEventListener('click', () => {
+nextBtn?.addEventListener('click', () => {
+    stopAutoplay();
     currentIndex++;
     updateCarousel(true);
+    startAutoplay();
 });
 
-prevBtn.addEventListener('click', () => {
+prevBtn?.addEventListener('click', () => {
+    stopAutoplay();
     currentIndex--;
     updateCarousel(true);
+    startAutoplay();
 });
 
 /* ---------- Infinite loop correction ---------- */
@@ -122,10 +147,11 @@ window.addEventListener('resize', () => {
 
 /* ---------- Touch swipe ---------- */
 
-let startx = 0;
+let startX = 0;
 let isDragging = false
 
 track.addEventListener('touchstart', (e) => {
+    stopAutoplay();
     startX = e.touches[0].clientX;
     isDragging = true;
 }, { passive: true });
@@ -144,22 +170,32 @@ track.addEventListener('touchmove', (e) => {
 
 track.addEventListener('touchend', () => {
     isDragging = false;
+    startAutoplay();
 });
 
 track.addEventListener('touchcancel', () => {
     isDragging = false;
+    startAutoplay();
 });
+/* ---------- Mouse hover ---------- */
+
+track.addEventListener('mouseenter', stopAutoplay);
+track.addEventListener('mouseleave', startAutoplay);
 
 /* ---------- Keyboard navigation ---------- */
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') {
+        stopAutoplay();
         currentIndex++;
-        updateCarousel(true)
+        updateCarousel(true);
+        startAutoplay();
     }
     if (e.key === 'ArrowLeft') {
+        stopAutoplay();
         currentIndex--;
-        updateCarousel(true)
+        updateCarousel(true);
+        startAutoplay();
     }
 });
 
@@ -173,4 +209,7 @@ window.addEventListener('resize', () => {
 
 /* ---------- Init ---------- */
 
-setupCarousel()
+setupCarousel();
+startAutoplay();
+
+});

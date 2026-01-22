@@ -393,9 +393,11 @@ article .icon {
 }
 
 .ProjectImg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
     border-radius: 2rem;
-    width: 90%;
-    height: 90%;
 }
 
 .project-title {
@@ -429,11 +431,19 @@ article .icon {
     transition: transform 0.5s ease;
     will-change: transform;
     box-sizing: border-box;
+    align-items: stretch;
 }
 
 .carousel-track .details-container {
   flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.carousel-track .btn-container {
+    margin-top: auto;
 }
 
 .carousel-btn {
@@ -524,9 +534,14 @@ footer p {
         PROJECTS.HTML
 ========================= */
 
+/* PROJECTS-PROFILE */
+
 #projects-profile {
     position: relative;
     margin: 0;
+    padding-top: 0;
+    height: auto;
+    min-height: 100vh;
 }
 
 .projects-headder {
@@ -561,5 +576,31 @@ footer p {
 }
 
 #projects-profile .arrow {
-    position: absolute;
+    right: 5rem;
+}
+
+/* PROJECTS-GAME */
+#projects-game{
+    position: relative;
+}
+
+#projects-game .arrow {
+    right: -5rem;
+}
+
+#projects-game .experience-details-container {
+    padding: 0 10rem;
+}
+
+/*PROJECTS-GRAPHIC*/
+#projects-graphic {
+    position: relative;
+}
+
+#projects-graphic .arrow {
+    right: -5rem;
+}
+
+#projects-graphic .experience-details-container {
+    padding: 0 10rem;
 }

@@ -1,5 +1,5 @@
 @media screen and (max-width: 1400px) {
-    #profile{
+    #profile, #projects-profile{
         height: 83vh;
         margin-bottom: 6rem;
     }
@@ -23,7 +23,7 @@
     footer nav {
         justify-content: space-around;
     }
-    #experience, .experience-details-container {
+    #experience .experience-details-container {
         margin-top: 2rem;
     }
     #profile, .section-container {
@@ -46,18 +46,38 @@
     .about-containers {
         margin-top: 0;
     }
+    .carousel {
+        padding: 0;
+        width: 100%;
+    }
+    .carousel-btn {
+        display: none;
+    }
+    .carousel-viewport {
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+    .carousel, .carousel-viewport{
+        width: 100%;
+        max-width: 100%;
+    }
+    .carousel-track{
+        padding: 1rem 2rem;
+        --gap: 1rem;
+        width: 100%;
+    }
+    #projects .experience-details-container,
+    #projects-game .experience-details-container,
+    #projects-graphic .experience-details-container {
+        padding: 0 1rem;
+    }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) and (min-width: 601px) {
     .carousel-track .details-container {
-        flex: 0 0 calc((100% - var(--gap)) / 2);;
-    }
-    .carousel-btn.prev {
-        width: fit-content;
-    }
-
-    .carousel-btn.next{
-        width: fit-content;
+        flex: 0 0 calc((100% - var(--gap)) / 2);
+        max-width: calc((100% - var(--gap)) / 2);
     }
 }
 
@@ -112,6 +132,10 @@
         text-align: justify;
     }
     #projects .experience-details-container {
+        padding: 0 1rem;
+    }
+    #projects-game .experience-details-container,
+    #projects-graphic .experience-details-container {
         padding: 0 1rem;
     }
     .carousel-track .details-container {
