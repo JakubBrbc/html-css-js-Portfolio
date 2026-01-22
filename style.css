@@ -539,9 +539,13 @@ footer p {
 #projects-profile {
     position: relative;
     margin: 0;
-    padding-top: 0;
+    padding-top: 10vh;
     height: auto;
     min-height: 100vh;
+}
+
+#projects-profile .title{
+    color: white;
 }
 
 .projects-headder {
@@ -549,7 +553,7 @@ footer p {
     position: relative;
     align-content: center;
     box-sizing: border-box;
-    height: 100vh;
+    height: 90vh;
 }
 
 .projects-headder img {
