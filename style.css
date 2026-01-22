@@ -582,6 +582,7 @@ footer p {
 /* PROJECTS-GAME */
 #projects-game{
     position: relative;
+    margin: 0;
 }
 
 #projects-game .arrow {
@@ -595,6 +596,7 @@ footer p {
 /*PROJECTS-GRAPHIC*/
 #projects-graphic {
     position: relative;
+    margin: 0;
 }
 
 #projects-graphic .arrow {
