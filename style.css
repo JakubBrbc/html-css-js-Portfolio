@@ -451,18 +451,28 @@ article .icon {
     top: 50%;
     transform: translateY(-50%);
     background: rgb(237, 237, 237);
-    color: white;
     border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1.15rem;
     cursor: pointer;
     z-index: 1;
-    opacity: 1;
-    border-radius: 2rem;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
     touch-action: manipulation;
+
+    /*ButtonShape*/
+
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+    /*Aligment*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*Font*/
+
+    font-size: 2rem;
+    color: white;
+    line-height: 55px;
 }
 
 .carousel-btn:hover {
@@ -471,10 +481,12 @@ article .icon {
 
 .carousel-btn.prev {
   left: -6rem;
+  padding-right: 2px;
 }
 
 .carousel-btn.next {
   right: -6rem;
+  padding-left: 2px;
 }
 
 #projects .arrow {
@@ -544,8 +556,10 @@ footer p {
     min-height: 100vh;
 }
 
-#projects-profile .title{
+.projects-title {
     color: white;
+    font-size: 3rem;
+    text-align: center;
 }
 
 .projects-headder {
@@ -553,6 +567,7 @@ footer p {
     align-content: center;
     box-sizing: border-box;
     height: 90vh;
+    box-shadow: 0 5px 10px rgb(220, 220, 220);
 }
 
 .projects-headder img {
@@ -564,11 +579,11 @@ footer p {
 
 .projects__text {
     position: absolute;
-    padding: 2.5rem;
+    padding: 2rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0px 5px 10px rgb(220, 220, 220);
+    box-shadow: 0px 0px 15px rgb(220, 220, 220);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 2rem;
@@ -583,6 +598,7 @@ footer p {
 }
 
 /* PROJECTS-GAME */
+
 #projects-game{
     position: relative;
     margin: 0;
@@ -596,7 +612,8 @@ footer p {
     padding: 0 10rem;
 }
 
-/*PROJECTS-GRAPHIC*/
+/* PROJECTS-GRAPHIC */
+
 #projects-graphic {
     position: relative;
     margin: 0;
@@ -608,4 +625,104 @@ footer p {
 
 #projects-graphic .experience-details-container {
     padding: 0 10rem;
+}
+/* =========================
+        ./PROJECTS/..
+========================= */
+
+#project-profile {
+    position: relative;
+    margin: 0;
+    padding-top: 10vh;
+    height: auto;
+    min-height: 75vh;
+}
+
+.project-head {
+    position: relative;
+    align-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 5px 10px rgb(220, 220, 220);
+}
+
+.project-head img {
+    display: block;
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    object-position: center -4rem;
+}
+
+#project-intro {
+    position: relative;
+    justify-content: center;
+    flex-direction: row;  
+}
+
+#project-intro .section__text__p1 {
+    margin-top: 0.5rem;
+}
+
+#project-intro .section-container {
+    align-items: center;
+}
+
+#project-concept .section-container {
+    align-items: center;
+}
+
+/* PAGE BUTTONS */
+
+.project-nav {
+    display: flex;
+    flex-direction: row;
+    margin: 5rem 10rem;
+    justify-content: space-between;
+}
+.page-btn {
+    display: inline-flex;
+    gap: 1.5rem;
+    border: none;
+    background: none;
+    font-size: 2.5rem;
+    font-weight: 600;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+}
+.next .btn-text {
+    text-align: end;
+}
+.prev .btn-text {
+    text-align: start;
+}
+.page-btn:hover {
+    color: grey;
+    will-change: transform;
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(.4,0,.2,1)
+}
+.page-arrow {
+    display: inline-block;
+    align-self: center;
+}
+
+@keyframes nudge-left {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes nudge-right {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.page-btn.prev:hover .page-arrow {
+    animation: nudge-left 0.4s ease;
+}
+
+.page-btn.next:hover .page-arrow {
+    animation: nudge-right 0.4s ease;
 }

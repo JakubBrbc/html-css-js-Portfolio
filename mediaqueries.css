@@ -6,6 +6,9 @@
     .about-containers {
         flex-wrap: wrap;
     }
+    .project-head img {
+    object-position: center;
+    }
 }
 
 
@@ -71,6 +74,9 @@
     #projects-game .experience-details-container,
     #projects-graphic .experience-details-container {
         padding: 0 1rem;
+    }
+    .project-nav {
+        margin: 5rem 1%;
     }
 }
 
@@ -158,10 +164,19 @@
         overflow-y: visible;
         overflow-x: hidden;
     }
+    .page-btn {
+        font-size: 1rem;
+        padding: 0.25rem 1rem;
+    }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
     .carousel-track {
         transition: none;
+    }
+    .page-arrow {
+        transition: none;
+        animation: none;
     }
 }
