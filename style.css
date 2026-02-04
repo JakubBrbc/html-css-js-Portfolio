@@ -696,67 +696,56 @@ footer p {
 
 /*PROJECT GALLERY*/
 
-#project-gallery .cf-gallery {
-    margin-block: 5rem 0 !important;
-    padding: 10rem 0;
-    perspective: 1500px;
-    overflow: visible;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    height: auto;
-    max-height: 100vh;
-    scroll-snap-type: y proximity;
+#project-gallery {
+    margin: 0;
+    line-height: 1.6;
 }
 
-.cf-gallery__wrapper {
-    width: 100%;
-    max-width: var(--container-slim-max-wdith);
-    margin: 0 auto;
-    padding-top: 15vh;
-    padding-bottom: 5vh;
-    display: flex;
-    justify-content: center;
+.cf-gallery {
+    margin-block: 10rem;
+}
+
+.cf-gallery__container {
+    margin-inline: auto;
+    max-width: 50rem;
+}
+
+.cf-gallery__flow {
+    perspective: 100rem;
+    padding: 4rem 0;
 }
 
 .cf-gallery__track {
-    transform-style: preserve-3d;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    width: 100%;
+    padding-block: 20vh;
 }
 
 .cf-gallery__space {
+    perspective: 1000px;
     transform-style: preserve-3d;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
 }
 
 .cf-gallery__cover {
-    display: block;
-    width: 22rem;
-    max-width: 70vw;
-    border-radius: 0.75rem;
-    transform-style: preserve-3d;
-    transform-origin: center center;
+    width: 31.25rem;
+    max-width: 80vw;
+    border: .5rem;
     will-change: transform;
-    user-select: none;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    transition: transform 0.1s linear;
-    margin-left: auto !important;
-    margin-right: auto !important;
+
+    --p: var(--distance-from-center, 0); 
+    --abs-p: var(--abs-distance, 0);
+
+    transform: 
+        translateY(calc(var(--p) * 10%)) 
+        rotateX(calc(var(--p) * 45deg)) 
+        scale(calc(1.2 - (var(--abs-p) * 0.2)))
+        translateZ(calc((1 - var(--abs-p)) * 15rem));
+
+    z-index: calc(100 - (var(--abs-p) * 100));
+    box-shadow: 0 20px 40px rgba(0,0,0,calc(0.5 - var(--abs-p)));
 }
-
-
 
 /* PAGE BUTTONS */
 

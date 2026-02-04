@@ -214,62 +214,39 @@ startAutoplay();
 
 });
 
-/* =========================
-   3D SCROLL GALLERY
-========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-    const galleryCovers = document.querySelectorAll('.cf-gallery__cover');
 
-    const updateGallery = () => {
-        const viewCenter = window.innerHeight / 2;
+const galleryItems = document.querySelectorAll('.cf-gallery__cover');
 
-        galleryCovers.forEach(cover => {
-            const rect = cover.getBoundingClientRect();
-            const itemCenter = rect.top + rect.height / 2;
-            
-            let progress = (itemCenter - viewCenter) / viewCenter;
-            let absProg = Math.abs(progress);
+const updateGallery = () => {
+    const vh = window.innerHeight;
+    const center = vh / 2;
 
-            // 1. SELECTIVE DISPLACEMENT
-            // This is the secret: If the card is away from the center, 
-            // we counteract the scroll movement to "stack" them.
-            // When progress is positive (below), we translateY negative to pull it up.
-            // When progress is negative (above), we translateY positive to pull it down.
-            const stackCompression = progress * -180; 
-            
-            // 2. THE PEAK POP
-            // Only the card at the very center (absProg < 0.2) gets the full forward boost.
-            const activeFactor = Math.pow(Math.max(0, 1 - absProg), 6);
+    galleryItems.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const imgCenter = rect.top + rect.height / 2;
+        
+        // Normalize distance: 0 is center, -1 is top of screen, 1 is bottom
+        let distance = (imgCenter - center) / (vh / 2);
+        
+        // Clamp it so it doesn't go wild off-screen
+        let clamped = Math.max(-1.5, Math.min(1.5, distance));
+        
+        img.style.setProperty('--distance-from-center', clamped);
+        img.style.setProperty('--abs-distance', Math.abs(clamped));
+    });
+};
 
-            // 3. THE DEPTH
-            // Cards in the "deck" sit at -200px. The active card jumps to +400px.
-            const translateZ = (activeFactor * 600) - 200;
-            
-            // 4. THE TILT
-            const rotateX = progress * 45;
-
-            // Apply Transform
-            // translateY(stackCompression) pulls the cards into a pile.
-            cover.style.transform = `
-                perspective(1500px)
-                translateY(${stackCompression}px)
-                translateZ(${translateZ}px)
-                rotateX(${rotateX}deg)
-                scale(${0.75 + (activeFactor * 0.25)})
-            `;
-
-            // 5. Z-INDEX
-            // High for the active card, but also ensure cards higher in the HTML
-            // are visually 'below' or 'above' correctly.
-            cover.style.zIndex = Math.round(activeFactor * 100);
-            
-            // Hide cards that are too far away to keep performance high
-            cover.style.opacity = absProg > 2 ? "0" : "1";
+// Smooth execution
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            updateGallery();
+            ticking = false;
         });
-    };
-
-    window.addEventListener('scroll', updateGallery);
-    window.addEventListener('resize', updateGallery);
-    updateGallery(); 
+        ticking = true;
+    }
 });
+
+updateGallery(); // Init on load
