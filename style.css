@@ -13,7 +13,6 @@ body {
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
 }
 
 p {
@@ -694,69 +693,22 @@ footer p {
     align-items: center;
 }
 
-/*PROJECT GALLERY*/
+/*PROJECT BLUEPRINTS*/
 
-#project-gallery .cf-gallery {
-    margin-block: 5rem 0 !important;
-    padding: 10rem 0;
-    perspective: 1500px;
-    overflow: visible;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#project-blueprints {
+    position: relative;
     box-sizing: border-box;
-    height: auto;
-    max-height: 100vh;
-    scroll-snap-type: y proximity;
 }
 
-.cf-gallery__wrapper {
-    width: 100%;
-    max-width: var(--container-slim-max-wdith);
-    margin: 0 auto;
-    padding-top: 15vh;
-    padding-bottom: 5vh;
-    display: flex;
-    justify-content: center;
+#project-blueprints .section__pic-container {
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.cf-gallery__track {
-    transform-style: preserve-3d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
+.blueprint-pic {
+    border-radius: 2rem;
 }
-
-.cf-gallery__space {
-    transform-style: preserve-3d;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-}
-
-.cf-gallery__cover {
-    display: block;
-    width: 22rem;
-    max-width: 70vw;
-    border-radius: 0.75rem;
-    transform-style: preserve-3d;
-    transform-origin: center center;
-    will-change: transform;
-    user-select: none;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    transition: transform 0.1s linear;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-
 
 /* PAGE BUTTONS */
 

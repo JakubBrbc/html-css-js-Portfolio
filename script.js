@@ -169,7 +169,7 @@ track.addEventListener('touchmove', (e) => {
 }, { passive: true });
 
 track.addEventListener('touchend', () => {
-    isDragging = fals6e;
+    isDragging = false;
     startAutoplay();
 });
 
@@ -212,64 +212,4 @@ window.addEventListener('resize', () => {
 setupCarousel();
 startAutoplay();
 
-});
-
-/* =========================
-   3D SCROLL GALLERY
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-    const galleryCovers = document.querySelectorAll('.cf-gallery__cover');
-
-    const updateGallery = () => {
-        const viewCenter = window.innerHeight / 2;
-
-        galleryCovers.forEach(cover => {
-            const rect = cover.getBoundingClientRect();
-            const itemCenter = rect.top + rect.height / 2;
-            
-            let progress = (itemCenter - viewCenter) / viewCenter;
-            let absProg = Math.abs(progress);
-
-            // 1. SELECTIVE DISPLACEMENT
-            // This is the secret: If the card is away from the center, 
-            // we counteract the scroll movement to "stack" them.
-            // When progress is positive (below), we translateY negative to pull it up.
-            // When progress is negative (above), we translateY positive to pull it down.
-            const stackCompression = progress * -180; 
-            
-            // 2. THE PEAK POP
-            // Only the card at the very center (absProg < 0.2) gets the full forward boost.
-            const activeFactor = Math.pow(Math.max(0, 1 - absProg), 6);
-
-            // 3. THE DEPTH
-            // Cards in the "deck" sit at -200px. The active card jumps to +400px.
-            const translateZ = (activeFactor * 600) - 200;
-            
-            // 4. THE TILT
-            const rotateX = progress * 45;
-
-            // Apply Transform
-            // translateY(stackCompression) pulls the cards into a pile.
-            cover.style.transform = `
-                perspective(1500px)
-                translateY(${stackCompression}px)
-                translateZ(${translateZ}px)
-                rotateX(${rotateX}deg)
-                scale(${0.75 + (activeFactor * 0.25)})
-            `;
-
-            // 5. Z-INDEX
-            // High for the active card, but also ensure cards higher in the HTML
-            // are visually 'below' or 'above' correctly.
-            cover.style.zIndex = Math.round(activeFactor * 100);
-            
-            // Hide cards that are too far away to keep performance high
-            cover.style.opacity = absProg > 2 ? "0" : "1";
-        });
-    };
-
-    window.addEventListener('scroll', updateGallery);
-    window.addEventListener('resize', updateGallery);
-    updateGallery(); 
 });
